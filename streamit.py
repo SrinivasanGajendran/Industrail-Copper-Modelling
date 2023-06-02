@@ -1,8 +1,11 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import main
 import numpy as np
 st.set_page_config(layout="wide")
+
+main.Industrail_Copper_Modelling()
 
 df = pd.read_excel('daily_offers.xlsx')
 st.header('Industrial Copper Modelling Project')
@@ -27,15 +30,15 @@ with tab1:
 
     if submit_button:
 
-        with open(r"C:/Users/dines/Downloads/capstone_4/model.pkl", 'rb') as file:
+        with open(r"D:\Assignments\Final_project/model.pkl", 'rb') as file:
             model = pickle.load(file)
-        with open(r'C:/Users/dines/Downloads/capstone_4/scaler.pkl', 'rb') as f:
+        with open(r'D:\Assignments\Final_project/scaler.pkl', 'rb') as f:
             scale = pickle.load(f)
 
-        with open(r"C:/Users/dines/Downloads/capstone_4/ohe.pkl", 'rb') as f:
+        with open(r"D:\Assignments\Final_project/ohe.pkl", 'rb') as f:
             one_hot = pickle.load(f)
 
-        with open(r"C:/Users/dines/Downloads/capstone_4/ohe1.pkl", 'rb') as f:
+        with open(r"D:\Assignments\Final_project/ohe1.pkl", 'rb') as f:
             one_hot_1 = pickle.load(f)
 
         new_sample= np.array([[np.log(float(quantity_tons)),application,np.log(float(thickness)),float(width),country,float(customer),int(product_ref),item_type,status]])
@@ -65,12 +68,12 @@ with tab2:
             submit_button = st.form_submit_button(label="PREDICT STATUS")
 
         if submit_button:
-            with open(r"C:/Users/dines/Downloads/capstone_4/classifiermodel.pkl", 'rb') as file:
+            with open(r"D:\Assignments\Final_project/classifiermodel.pkl", 'rb') as file:
                 clas_model = pickle.load(file)
-            with open(r'C:/Users/dines/Downloads/capstone_4/classifierscaler.pkl', 'rb') as f:
+            with open(r'D:\Assignments\Final_project/classifierscaler.pkl', 'rb') as f:
                 clas_scale = pickle.load(f)
 
-            with open(r"C:/Users/dines/Downloads/capstone_4/classifieronehot.pkl", 'rb') as f:
+            with open(r"D:\Assignments\Final_project/classifieronehot.pkl", 'rb') as f:
                 class_one_hot = pickle.load(f)
 
             new_sample = np.array([[np.log(float(quantity_tons)), application,np.log(float(selling)), np.log(float(thickness)), float(width),
