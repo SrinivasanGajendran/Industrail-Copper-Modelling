@@ -49,6 +49,15 @@ Below is the dashboard of it
 
 **---------------------------------------------------------------Streamit.py-----------------------------------------------------------------------------**
 
+Libraries need to be imported in streamit file
+```
+import streamlit as st
+import pandas as pd
+import pickle
+import main
+import numpy as np
+st.set_page_config(layout="wide")
+```
 
 For Regression, After getting the input we will unpickle it and pass the user entered values in it
 
